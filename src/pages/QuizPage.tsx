@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getQuizById } from "@/data/quizzes";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Quiz, QuizResult } from "@/types/quiz";
-import { Home, RefreshCcw, Heart, Star, Cake, Cookie, PartyPopper, Smile } from "lucide-react";
+import { Cake, Smile, Star } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import QuizProgress from "@/components/QuizProgress";
+import QuizQuestions from "@/components/QuizQuestions";
+import QuizResultComponent from "@/components/QuizResult";
 
 const QuizPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -132,115 +131,19 @@ const QuizPage = () => {
           
           <CardContent>
             {!showResult ? (
-              <div>
-                <QuizProgress currentStep={Math.max(1, Math.ceil(progress / 100 * quiz.questions.length))} totalSteps={quiz.questions.length} />
-                
-                <div className="space-y-8">
-                  {quiz.questions.map((question, questionIndex) => (
-                    <div key={question.id} className="border border-gray-100 rounded-lg p-5 bg-white shadow-sm">
-                      <h3 className="text-xl font-medium mb-4 flex items-center gap-2">
-                        <Cookie className="text-amber-500" size={20} />
-                        Question {questionIndex + 1}: {question.text}
-                      </h3>
-                      
-                      {question.image && (
-                        <div className="mb-4">
-                          <img
-                            src={question.image}
-                            alt="Question"
-                            className="mx-auto max-h-60 object-contain rounded"
-                          />
-                        </div>
-                      )}
-                      
-                      <RadioGroup 
-                        value={selectedAnswers[questionIndex]}
-                        className="space-y-3"
-                      >
-                        {question.options.map((option) => (
-                          <div 
-                            key={option.id} 
-                            className={`flex items-center space-x-2 border rounded-lg p-3 transition-all cursor-pointer ${
-                              selectedAnswers[questionIndex] === option.id 
-                                ? "border-purple-300 bg-purple-50" 
-                                : "border-gray-200 hover:bg-blue-50"
-                            }`}
-                            onClick={() => handleAnswerSelect(questionIndex, option.id, option.points)}
-                          >
-                            <RadioGroupItem 
-                              value={option.id} 
-                              id={`option-${questionIndex}-${option.id}`}
-                              checked={selectedAnswers[questionIndex] === option.id}
-                            />
-                            <label 
-                              htmlFor={`option-${questionIndex}-${option.id}`}
-                              className="w-full cursor-pointer py-1"
-                            >
-                              <div className="flex flex-col">
-                                <span>{option.text}</span>
-                                {option.image && (
-                                  <img 
-                                    src={option.image} 
-                                    alt={option.text} 
-                                    className="mt-2 max-h-40 object-contain rounded" 
-                                  />
-                                )}
-                              </div>
-                            </label>
-                          </div>
-                        ))}
-                      </RadioGroup>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="mt-8 flex justify-center">
-                  <Button 
-                    onClick={handleSubmit} 
-                    className="px-8 py-2 text-lg flex items-center gap-2"
-                    disabled={selectedAnswers.some(a => a === "")}
-                  >
-                    Submit Quiz
-                    <Heart className={progress === 100 ? "text-red-400 animate-pulse" : ""} />
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center">
-                {result && (
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
-                      <PartyPopper className="text-pink-400" />
-                      {result.title}
-                      <PartyPopper className="text-pink-400" />
-                    </h3>
-                    
-                    {result.image && (
-                      <div className="mb-6">
-                        <img
-                          src={result.image}
-                          alt={result.title}
-                          className="mx-auto max-h-60 object-contain rounded"
-                        />
-                      </div>
-                    )}
-                    
-                    <p className="mb-6 text-gray-700">{result.description}</p>
-                    
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <Button onClick={restartQuiz} variant="outline" className="flex items-center gap-2">
-                        <RefreshCcw size={16} />
-                        Retake Quiz
-                      </Button>
-                      <Button onClick={() => navigate("/")} className="flex items-center gap-2">
-                        <Home size={16} />
-                        Back to Home
-                      </Button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
+              <QuizQuestions 
+                questions={quiz.questions}
+                selectedAnswers={selectedAnswers}
+                progress={progress}
+                onAnswerSelect={handleAnswerSelect}
+                onSubmit={handleSubmit}
+              />
+            ) : result ? (
+              <QuizResultComponent 
+                result={result} 
+                onRestartQuiz={restartQuiz} 
+              />
+            ) : null}
           </CardContent>
         </Card>
       </div>
