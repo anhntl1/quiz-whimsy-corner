@@ -6,7 +6,7 @@ export const quizzes: Quiz[] = [
     id: "personality",
     title: "What's Your Personality Type?",
     description: "Discover what kind of personality you have!",
-    image: "/placeholder.svg",
+    image: "/images/placeholder.svg",
     questions: [
       {
         id: "q1",
@@ -43,7 +43,7 @@ export const quizzes: Quiz[] = [
         description: "You're reflective, analytical, and value deep connections. You recharge by spending time alone and prefer meaningful conversations to small talk.",
         minScore: 3,
         maxScore: 7,
-        image: "/placeholder.svg"
+        image: "/images/placeholder.svg"
       },
       {
         id: "ambivert",
@@ -51,7 +51,7 @@ export const quizzes: Quiz[] = [
         description: "You have a healthy mix of introverted and extroverted traits. You're adaptable and can thrive in both social situations and solitude.",
         minScore: 8,
         maxScore: 11,
-        image: "/placeholder.svg"
+        image: "/images/placeholder.svg"
       },
       {
         id: "extrovert",
@@ -59,7 +59,7 @@ export const quizzes: Quiz[] = [
         description: "You're outgoing, talkative, and draw energy from social interactions. You love meeting new people and are often the life of the party!",
         minScore: 12,
         maxScore: 15,
-        image: "/placeholder.svg"
+        image: "/images/placeholder.svg"
       }
     ]
   },
@@ -67,7 +67,7 @@ export const quizzes: Quiz[] = [
     id: "food",
     title: "What Food Matches Your Personality?",
     description: "Find out which food represents you!",
-    image: "/placeholder.svg",
+    image: "/images/placeholder.svg",
     questions: [
       {
         id: "q1",

@@ -23,7 +23,7 @@ const QuizQuestions = ({
   return (
     <div>
       <QuizProgress 
-        currentStep={Math.max(1, Math.ceil(progress / 100 * questions.length))} 
+        currentStep={Math.max(0, Math.ceil(progress / 100 * questions.length))} 
         totalSteps={questions.length} 
       />
       
