@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getQuizById } from "@/data/quizzes";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Quiz, QuizResult } from "@/types/quiz";
-import { Home, RefreshCcw, Heart, Star, Cake, Cookie, Balloon, Smile } from "lucide-react";
+import { Home, RefreshCcw, Heart, Star, Cake, Cookie, PartyPopper, Smile } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import QuizProgress from "@/components/QuizProgress";
@@ -208,9 +207,9 @@ const QuizPage = () => {
                 {result && (
                   <div>
                     <h3 className="text-2xl font-bold mb-4 flex items-center justify-center gap-2">
-                      <Balloon className="text-pink-400" />
+                      <PartyPopper className="text-pink-400" />
                       {result.title}
-                      <Balloon className="text-pink-400" />
+                      <PartyPopper className="text-pink-400" />
                     </h3>
                     
                     {result.image && (

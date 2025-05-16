@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { quizzes } from "@/data/quizzes";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Heart, Cake, Cookie, Balloon } from "lucide-react";
+import { ArrowRight, Star, Heart, Cake, Cookie, PartyPopper } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ const Index = () => {
               <CardContent className="flex-grow">
                 <div className="text-sm text-gray-500">
                   <span className="flex items-center gap-1">
-                    <Balloon className="text-purple-400" size={16} />
+                    <PartyPopper className="text-purple-400" size={16} />
                     {quiz.questions.length} fun questions
                   </span>
                 </div>
