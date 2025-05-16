@@ -24,7 +24,10 @@ const QuizPage = () => {
       const foundQuiz = getQuizById(id);
       if (foundQuiz) {
         setQuiz(foundQuiz);
-        setSelectedAnswers(new Array(foundQuiz.questions.length).fill(""));
+        // Initialize with empty selections if not already set
+        if (selectedAnswers.length === 0) {
+          setSelectedAnswers(new Array(foundQuiz.questions.length).fill(""));
+        }
       } else {
         toast({
           title: "Quiz not found",
@@ -34,7 +37,7 @@ const QuizPage = () => {
         navigate("/");
       }
     }
-  }, [id, navigate]);
+  }, [id, navigate, selectedAnswers.length]);
 
   const handleAnswerSelect = (questionIndex: number, optionId: string, points: number) => {
     const newSelectedAnswers = [...selectedAnswers];
@@ -88,11 +91,9 @@ const QuizPage = () => {
   };
 
   const restartQuiz = () => {
-    setSelectedAnswers(new Array(quiz?.questions.length || 0).fill(""));
-    setTotalScore(0);
+    // Keep the selected answers but reset the visible result
     setShowResult(false);
     setResult(null);
-    setProgress(0);
   };
 
   if (!quiz) {
@@ -175,14 +176,16 @@ const QuizPage = () => {
                               htmlFor={`option-${questionIndex}-${option.id}`}
                               className="w-full cursor-pointer py-1"
                             >
-                              {option.text}
-                              {option.image && (
-                                <img 
-                                  src={option.image} 
-                                  alt={option.text} 
-                                  className="mt-2 max-h-32 object-contain"
-                                />
-                              )}
+                              <div className="flex flex-col">
+                                <span>{option.text}</span>
+                                {option.image && (
+                                  <img 
+                                    src={option.image} 
+                                    alt={option.text} 
+                                    className="mt-2 max-h-40 object-contain rounded" 
+                                  />
+                                )}
+                              </div>
                             </label>
                           </div>
                         ))}
