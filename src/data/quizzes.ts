@@ -72,28 +72,76 @@ export const quizzes: Quiz[] = [
       {
         id: "q1",
         text: "How would you describe your ideal day?",
+        image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
         options: [
-          { id: "q1a", text: "Relaxing at home with comfort and familiarity", points: 1 },
-          { id: "q1b", text: "Trying something new and exciting", points: 5 },
-          { id: "q1c", text: "A balance of adventure and downtime", points: 3 }
+          { 
+            id: "q1a", 
+            text: "Relaxing at home with comfort and familiarity", 
+            points: 1,
+            image: "https://images.unsplash.com/photo-1501286353178-1ec881214838"
+          },
+          { 
+            id: "q1b", 
+            text: "Trying something new and exciting", 
+            points: 5,
+            image: "https://images.unsplash.com/photo-1472396961693-142e6e269027"
+          },
+          { 
+            id: "q1c", 
+            text: "A balance of adventure and downtime", 
+            points: 3,
+            image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1"
+          }
         ]
       },
       {
         id: "q2",
         text: "How do your friends describe you?",
+        image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
         options: [
-          { id: "q2a", text: "Reliable and comforting", points: 1 },
-          { id: "q2b", text: "Complex and layered", points: 3 },
-          { id: "q2c", text: "Bold and spicy", points: 5 }
+          { 
+            id: "q2a", 
+            text: "Reliable and comforting", 
+            points: 1,
+            image: "https://images.unsplash.com/photo-1501286353178-1ec881214838"
+          },
+          { 
+            id: "q2b", 
+            text: "Complex and layered", 
+            points: 3,
+            image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1"
+          },
+          { 
+            id: "q2c", 
+            text: "Bold and spicy", 
+            points: 5,
+            image: "https://images.unsplash.com/photo-1472396961693-142e6e269027"
+          }
         ]
       },
       {
         id: "q3",
         text: "What's your approach to life's challenges?",
+        image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
         options: [
-          { id: "q3a", text: "I face them head-on with energy", points: 5 },
-          { id: "q3b", text: "I adapt and find creative solutions", points: 3 },
-          { id: "q3c", text: "I take my time to carefully work through them", points: 1 }
+          { 
+            id: "q3a", 
+            text: "I face them head-on with energy", 
+            points: 5,
+            image: "https://images.unsplash.com/photo-1472396961693-142e6e269027"
+          },
+          { 
+            id: "q3b", 
+            text: "I adapt and find creative solutions", 
+            points: 3,
+            image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1"
+          },
+          { 
+            id: "q3c", 
+            text: "I take my time to carefully work through them", 
+            points: 1,
+            image: "https://images.unsplash.com/photo-1501286353178-1ec881214838"
+          }
         ]
       }
     ],
@@ -104,7 +152,7 @@ export const quizzes: Quiz[] = [
         description: "You're reliable, comforting, and make everyone around you feel at ease. Just like mac & cheese, you're a classic that everyone loves!",
         minScore: 3,
         maxScore: 7,
-        image: "/placeholder.svg"
+        image: "https://images.unsplash.com/photo-1501286353178-1ec881214838"
       },
       {
         id: "balanced",
@@ -112,7 +160,7 @@ export const quizzes: Quiz[] = [
         description: "You're adaptable and well-rounded with different layers to your personality. Like a good stir fry, you bring a balance of flavors to life!",
         minScore: 8,
         maxScore: 11,
-        image: "/placeholder.svg"
+        image: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1"
       },
       {
         id: "spicy",
@@ -120,7 +168,7 @@ export const quizzes: Quiz[] = [
         description: "You're bold, exciting, and leave a lasting impression. Like a spicy curry, you bring heat and energy to every situation!",
         minScore: 12,
         maxScore: 15,
-        image: "/placeholder.svg"
+        image: "https://images.unsplash.com/photo-1472396961693-142e6e269027"
       }
     ]
   }
